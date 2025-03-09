@@ -10,4 +10,4 @@ Seat-Catcher AWS Infrastructure management repository
 - If our service experiences high demand, such as a large number of network requests and responses, we will improve our infrastructure to be more highly available and scale both vertically and horizontally.
 
 ## Configuration Plan
-![image](https://github.com/user-attachments/assets/beb98846-46c0-4759-a20b-58a25dabd90b)
+![image](https://github.com/user-attachments/assets/e03151a5-e785-4f91-b497-fd240c77c3c2)
