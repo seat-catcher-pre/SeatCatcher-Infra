@@ -1,5 +1,6 @@
 # SeatCatcher-Infra
-Seat-Catcher AWS Infrastructure management repository
+Seat-Catcher AWS Infrastructure management repository  
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/seat-catcher/SeatCatcher-Infra?utm_source=oss&utm_medium=github&utm_campaign=seat-catcher%2FSeatCatcher-Infra&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 ## Infrastructure configuration considerations
 
