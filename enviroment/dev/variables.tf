@@ -27,6 +27,6 @@ variable "support_vpc" {
 
 variable "availability_zone" {
   description = "NCP availability zone"
-  type        = array(string)
-  default = ["KR-1", "KR-2"]
+  type        = list(string)
+  default     = ["KR-1", "KR-2"]
 }
