@@ -35,4 +35,5 @@ resource "ncloud_server" "dev_server" {
   server_image_number = data.ncloud_server_image_numbers.server_images.image_number_list.0.server_image_number
   server_spec_code    = data.ncloud_server_specs.spec.server_spec_list.0.server_spec_code
   login_key_name      = ncloud_login_key.loginkey.key_name
+  fee_system_type_code = "FXSUM"
 }
