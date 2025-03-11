@@ -27,5 +27,5 @@ resource "ncloud_network_interface" "dev_server_nic" {
   name                  = "dev-server-nic"
   description           = "dev-server-nic"
   subnet_no             = ncloud_subnet.dev_public_subnet.id
-  access_control_groups = [ncloud_access_control_group.dev_acg.id]
+  access_control_groups = [ncloud_access_control_group.dev_server_acg.id]
 }

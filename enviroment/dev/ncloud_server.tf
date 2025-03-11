@@ -3,8 +3,8 @@ resource "ncloud_login_key" "loginkey" {
 }
 
 resource "local_file" "loginkey_file" {
-  content = ncloud_login_key.loginkey.private_key
-  filename = "${path.module}/test-key.pem"
+  content         = ncloud_login_key.loginkey.private_key
+  filename        = "${path.module}/test-key.pem"
   file_permission = "0400"
 }
 
