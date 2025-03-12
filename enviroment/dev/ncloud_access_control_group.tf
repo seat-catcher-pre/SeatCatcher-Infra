@@ -16,9 +16,19 @@ resource "ncloud_access_control_group_rule" "dev-server-acg-rule" {
 
   inbound {
     protocol    = "TCP"
-    ip_block    = "${data.http.my_ip.response_body}/32"
-    port_range  = "22"
-    description = "accept ssh port"
+    ip_block    = "0.0.0.0/0"
+    port_range  = "80"
+    description = "accept http port"
+  }
+
+  dynamic "inbound" {
+    for_each = var.backend_team
+    content {
+      protocol    = "TCP"
+      ip_block    = "${inbound.value}/32"
+      port_range  = "22"
+      description = "only accept spring boot application request from backend team"
+    }
   }
 
   inbound {

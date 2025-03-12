@@ -54,3 +54,15 @@ variable "database_port" {
   type        = number
   sensitive   = true
 }
+
+variable "ssl_cert_number" {
+  description = "SSL certificate number"
+  type        = number
+  sensitive   = true
+}
+
+variable "backend_team" {
+  description = "backend developers ip addresses"
+  type        = list(string)
+  sensitive   = true
+}
