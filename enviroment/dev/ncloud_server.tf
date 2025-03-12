@@ -15,6 +15,7 @@ resource "ncloud_block_storage" "dev_block_storage" {
   hypervisor_type    = "KVM"
   zone               = var.availability_zone[0]
   volume_type        = "CB1"
+  depends_on         = [ncloud_server.dev_server]
 }
 
 resource "ncloud_public_ip" "dev_public_ip" {
@@ -42,6 +43,10 @@ resource "ncloud_server" "dev_server" {
   server_spec_code     = data.ncloud_server_specs.spec.server_spec_list.0.server_spec_code
   login_key_name       = ncloud_login_key.loginkey.key_name
   fee_system_type_code = "FXSUM"
+  network_interface {
+    network_interface_no = ncloud_network_interface.dev_server_nic.id
+    order                = 0
+  }
 }
 
 output "dev_server_ip" {
