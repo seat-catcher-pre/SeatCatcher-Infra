@@ -45,3 +45,10 @@ resource "ncloud_access_control_group_rule" "dev-server-acg-rule" {
     description = "accept 1-65535 port"
   }
 }
+
+# Default PostgreSQL ASG (from import)
+resource "ncloud_access_control_group" "dev_database_acg" {
+  name        = "dev-database-acg"
+  description = "dev-database-acg"
+  vpc_no      = ncloud_vpc.dev_vpc.vpc_no
+}

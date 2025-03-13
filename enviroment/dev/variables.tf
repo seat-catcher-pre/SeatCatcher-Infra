@@ -55,6 +55,12 @@ variable "database_port" {
   sensitive   = true
 }
 
+variable "database_asg_id" {
+  description = "Database ASG id"
+  type        = number
+  sensitive   = true
+}
+
 variable "ssl_cert_number" {
   description = "SSL certificate number"
   type        = number
