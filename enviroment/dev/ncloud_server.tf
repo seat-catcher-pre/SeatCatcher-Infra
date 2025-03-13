@@ -4,18 +4,8 @@ resource "ncloud_login_key" "loginkey" {
 
 resource "local_file" "loginkey_file" {
   content         = ncloud_login_key.loginkey.private_key
-  filename        = "${path.module}/test-key.pem"
+  filename        = "${path.module}/server-key.pem"
   file_permission = "0400"
-}
-
-resource "ncloud_block_storage" "dev_block_storage" {
-  size               = "10"
-  server_instance_no = ncloud_server.dev_server.instance_no
-  name               = "dev-block-storage"
-  hypervisor_type    = "KVM"
-  zone               = var.availability_zone[0]
-  volume_type        = "CB1"
-  depends_on         = [ncloud_server.dev_server]
 }
 
 resource "ncloud_public_ip" "dev_public_ip" {
@@ -32,7 +22,7 @@ data "ncloud_server_image_numbers" "server_images" {
 data "ncloud_server_specs" "spec" {
   filter {
     name   = "server_spec_code"
-    values = ["s2-g3"]
+    values = ["mi1-g3"]
   }
 }
 
@@ -43,10 +33,16 @@ resource "ncloud_server" "dev_server" {
   server_spec_code     = data.ncloud_server_specs.spec.server_spec_list.0.server_spec_code
   login_key_name       = ncloud_login_key.loginkey.key_name
   fee_system_type_code = "FXSUM"
+  init_script_no       = ncloud_init_script.server_init.id
   network_interface {
     network_interface_no = ncloud_network_interface.dev_server_nic.id
     order                = 0
   }
+}
+
+resource "ncloud_init_script" "server_init" {
+  name    = "server-initiate-script"
+  content = file("${path.module}/cloud_init.sh")
 }
 
 output "dev_server_ip" {
