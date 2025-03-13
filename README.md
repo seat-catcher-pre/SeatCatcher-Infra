@@ -5,4 +5,4 @@ Seat-Catcher AWS Infrastructure management repository
 - 
 
 ## Architecture Diagram
-![image](https://github.com/user-attachments/assets/750000f6-bb7a-4599-8744-642faa747629)
+![image](https://github.com/user-attachments/assets/91cffc2e-a522-4b69-ab58-9a9906396374)
