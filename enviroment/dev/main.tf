@@ -8,13 +8,9 @@ terraform {
   required_version = ">= 0.13"
 
   backend "s3" {
-    bucket = "seatchatcher-tfstate-backend"
+    bucket = "dev-tfstate-backend-bucket"
     key    = "seatcatcher-terraform-remote-state/terraform.tfstate"
-
-    # Set the region according to your location
-    region     = "KR"
-    access_key = var.access_key
-    secret_key = var.secret_key
+    region = "KR"
 
     # To skip AWS authentication logic
     skip_region_validation      = true

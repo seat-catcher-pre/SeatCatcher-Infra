@@ -18,13 +18,13 @@ resource "ncloud_lb_target_group" "dev_server_tg" {
   vpc_no      = ncloud_vpc.dev_vpc.vpc_no
   protocol    = "HTTP"
   target_type = "VSVR"
-  port        = 80
+  port        = 8080
   description = "for test"
   health_check {
     protocol       = "HTTP"
     http_method    = "GET"
-    port           = 80
-    url_path       = "/"
+    port           = 8080
+    url_path       = "/health"
     cycle          = 30
     up_threshold   = 2
     down_threshold = 2

@@ -30,6 +30,7 @@ resource "ncloud_network_interface" "dev_server_nic" {
   access_control_groups = [ncloud_access_control_group.dev_server_acg.id]
 }
 
+
 resource "ncloud_subnet" "dev_alb_public_subnet" {
   vpc_no         = ncloud_vpc.dev_vpc.id
   subnet         = "10.0.2.0/24"

@@ -1,5 +1,5 @@
 resource "ncloud_login_key" "loginkey" {
-  key_name = "test-key"
+  key_name = "server-key"
 }
 
 resource "local_file" "loginkey_file" {

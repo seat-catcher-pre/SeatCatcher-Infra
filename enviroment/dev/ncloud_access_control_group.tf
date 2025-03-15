@@ -14,13 +14,6 @@ data "http" "my_ip" {
 resource "ncloud_access_control_group_rule" "dev-server-acg-rule" {
   access_control_group_no = ncloud_access_control_group.dev_server_acg.id
 
-  inbound {
-    protocol    = "TCP"
-    ip_block    = "0.0.0.0/0"
-    port_range  = "80"
-    description = "accept http port"
-  }
-
   dynamic "inbound" {
     for_each = var.backend_team
     content {
@@ -46,9 +39,31 @@ resource "ncloud_access_control_group_rule" "dev-server-acg-rule" {
   }
 }
 
-# Default PostgreSQL ASG (from import)
-resource "ncloud_access_control_group" "dev_database_acg" {
-  name        = "dev-database-acg"
-  description = "dev-database-acg"
-  vpc_no      = ncloud_vpc.dev_vpc.vpc_no
+# 자동 생성된 PostgreSQL ACG 참조
+data "ncloud_access_control_group" "dev_database_acg" {
+  name = "cloud-postgresql-1pm0kw"
+}
+
+#Default PostgreSQL ASG Rule (from import)
+resource "ncloud_access_control_group_rule" "dev_database_acg_rule" {
+  access_control_group_no = data.ncloud_access_control_group.dev_database_acg.access_control_group_no
+
+  inbound {
+    protocol                       = "ICMP"
+    source_access_control_group_no = ncloud_access_control_group.dev_server_acg.id
+    description                    = "Accept ICMP request from dev-server"
+  }
+
+  inbound {
+    protocol                       = "TCP"
+    source_access_control_group_no = ncloud_access_control_group.dev_server_acg.access_control_group_no
+    port_range                     = "5432"
+    description                    = "Accept PostgreSQL request from dev-server"
+  }
+
+  outbound {
+    protocol   = "TCP"
+    ip_block   = ncloud_vpc.dev_vpc.ipv4_cidr_block
+    port_range = "1-65535"
+  }
 }
