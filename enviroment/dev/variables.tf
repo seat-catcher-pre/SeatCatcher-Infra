@@ -55,6 +55,12 @@ variable "database_port" {
   sensitive   = true
 }
 
+variable "dev_database_asg_id" {
+  description = "Database ASG id"
+  type        = number
+  sensitive   = true
+}
+
 variable "ssl_cert_number" {
   description = "SSL certificate number"
   type        = number
@@ -64,5 +70,11 @@ variable "ssl_cert_number" {
 variable "backend_team" {
   description = "backend developers ip addresses"
   type        = list(string)
+  sensitive   = true
+}
+
+variable "dev_database_nic_id" {
+  description = "Database NIC id"
+  type        = number
   sensitive   = true
 }

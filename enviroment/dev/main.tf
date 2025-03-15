@@ -4,7 +4,29 @@ terraform {
       source = "NaverCloudPlatform/ncloud"
     }
   }
+
   required_version = ">= 0.13"
+
+  backend "s3" {
+    bucket = "dev-tfstate-backend-bucket"
+    key    = "seatcatcher-terraform-remote-state/terraform.tfstate"
+    region = "KR"
+
+    # To skip AWS authentication logic
+    skip_region_validation      = true
+    skip_requesting_account_id  = true
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    skip_s3_checksum            = true
+
+    # For state locking
+    use_lockfile = true
+
+    endpoints = {
+      # Set the endpoint according to your region
+      s3 = "https://kr.object.ncloudstorage.com"
+    }
+  }
 }
 
 provider "ncloud" {
