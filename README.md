@@ -2,7 +2,7 @@
 Seat-Catcher AWS Infrastructure management repository
 
 ## Considerations
-- If you wanna create micro instance in naver cloud, You have to specify **fee_system_type_code = "FXSUM"** on your server resource block
+- To create micro instance in naver cloud, You have to specify **fee_system_type_code = "FXSUM"** on your server resource block
 - Set up remote backend ncloud object storage to manage terraform.tfstate -> see below "HOW TO RUN"
 
 ## Architecture Diagram
