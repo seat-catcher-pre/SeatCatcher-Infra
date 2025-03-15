@@ -12,7 +12,7 @@ Seat-Catcher AWS Infrastructure management repository
 
 - The backend.hcl file is private. Request it to backend developers
 - The dev.tfvars file is private. Request it to backend developers
-- See carefully "PLAN" logs when you modify cloud architect
+- See carefully "PLAN" logs when you modify cloud architecture
 
 ```terraform
 terraform init -backend-config=backend.hcl
