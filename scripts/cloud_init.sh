@@ -24,3 +24,4 @@ if [ -z "$(docker --version)" ]; then
 fi
 
 sudo service docker start
+sudo systenctl enable docker
