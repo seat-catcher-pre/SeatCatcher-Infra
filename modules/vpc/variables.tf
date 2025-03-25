@@ -17,3 +17,8 @@ variable "availability_zone" {
   description = "Availability zone"
   type        = string
 }
+
+variable "vpc_tag_name" {
+  description = "value of the Name tag for the VPC"
+  type        = string
+}

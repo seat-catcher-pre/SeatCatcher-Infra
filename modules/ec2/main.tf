@@ -9,11 +9,10 @@ data "aws_ami" "amzn-linux-2023-ami" {
 }
 
 resource "aws_instance" "dev_api_instance" {
-  count         = var.instance_count
-  ami           = data.aws_ami.amzn-linux-2023-ami.id
-  instance_type = var.instance_type
-  subnet_id     = element(var.subnets, 0)
-  user_data     = file("../scripts/cloud_init.sh")
+  ami                         = data.aws_ami.amzn-linux-2023-ami.id
+  instance_type               = var.instance_type
+  subnet_id                   = element(var.subnets, 0)
+  user_data                   = file("../scripts/cloud_init.sh")
   associate_public_ip_address = true
 
   tags = {
@@ -22,7 +21,6 @@ resource "aws_instance" "dev_api_instance" {
 }
 
 resource "aws_instance" "dev_docs_instance" {
-  count                       = var.instance_count
   ami                         = data.aws_ami.amzn-linux-2023-ami.id
   instance_type               = var.instance_type
   subnet_id                   = element(var.subnets, 0)
