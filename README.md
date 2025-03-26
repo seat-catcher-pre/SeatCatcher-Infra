@@ -35,7 +35,7 @@ Seat-Catcher AWS Infrastructure management repository
 - Replace `{env}` with the appropriate environment (e.g., `dev`, `prod`, `global`).
 - Always review the `PLAN` logs carefully before applying changes.
 - Ensure your AWS credentials are securely managed in your console (e.g., using environment variables or AWS CLI profiles).
-    - If AWS credentials are not configured properly, 
+    - If AWS credentials are not configured properly, s3 related error occurs.
 
 ### S3 Backend Configuration
 - Terraform state is stored in an S3 bucket. Ensure the bucket is properly configured with the correct permissions.
