@@ -25,3 +25,11 @@ fi
 
 sudo service docker start
 sudo systemctl enable docker
+
+# Install Docker Compose
+sudo apt-get install docker-compose-plugin -y
+
+if [ -z "$(docker-compose --version)" ]; then
+  echo "Docker Compose is not installed"
+  exit 1
+fi

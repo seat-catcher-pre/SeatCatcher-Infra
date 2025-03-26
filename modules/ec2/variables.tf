@@ -1,6 +1,6 @@
-variable "subnets" {
-  description = "Subnets"
-  type        = list(string)
+variable "public_subnet" {
+  description = "public subnet for the instance"
+  type        = string
 }
 
 variable "instance_type" {
@@ -9,8 +9,13 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "instance_count" {
-  description = "Number of instances"
-  type        = number
-  default     = 1
+variable "instance_key_name" {
+  description = "Key name"
+  type        = string
+  sensitive = true
+}
+
+variable "key_pair_save_path" {
+  description = "Path to save the key pair"
+  type        = string
 }
