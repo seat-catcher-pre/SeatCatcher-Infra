@@ -8,26 +8,31 @@ data "aws_ami" "amzn-linux-2023-ami" {
   }
 }
 
-resource "aws_instance" "dev_api_instance" {
+resource "aws_instance" "instance" {
   ami                         = data.aws_ami.amzn-linux-2023-ami.id
   instance_type               = var.instance_type
-  subnet_id                   = element(var.subnets, 0)
-  user_data                   = file("../scripts/cloud_init.sh")
+  subnet_id                   = var.public_subnet
+  user_data                   = file("../../scripts/cloud_init.sh")
   associate_public_ip_address = true
+  key_name = aws_key_pair.instance_key_pair.key_name
 
   tags = {
-    Name = "dev-api-instance"
+    Name = "dev-instance"
   }
 }
 
-resource "aws_instance" "dev_docs_instance" {
-  ami                         = data.aws_ami.amzn-linux-2023-ami.id
-  instance_type               = var.instance_type
-  subnet_id                   = element(var.subnets, 0)
-  user_data                   = file("../scripts/cloud_init.sh")
-  associate_public_ip_address = true
+resource "tls_private_key" "ssh_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
 
-  tags = {
-    Name = "dev-docs-instance"
-  }
+resource "aws_key_pair" "instance_key_pair" {
+  key_name   = var.instance_key_name
+  public_key = tls_private_key.ssh_key.public_key_openssh
+}
+
+resource "local_file" "private_key" {
+  content = tls_private_key.ssh_key.private_key_pem
+  filename = "${var.key_pair_save_path}/${var.instance_key_name}.pem"
+  file_permission = "0400"
 }

@@ -13,5 +13,18 @@ Seat-Catcher AWS Infrastructure management repository
 - See carefully "PLAN" logs when you modify cloud architecture
 
 ```terraform
-updating...
+# terraform reconfigure
+terraform init -reconfigure -backend-config=backend.hcl
+
+# if any changes in modules,
+terraform init -backend-config=backend.hcl
+```
+## How can i create Public key for SSH connection?
+```bash
+# -t: Type of encrypt
+# -b: # of bits
+# -C: comment
+# -f: save path
+# -N: encrypt option
+ssh-keygen -t rsa -b 4096 -C "" -f "{path-to-save-key}/{any-name}" -N ""
 ```
