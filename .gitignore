@@ -40,7 +40,7 @@ terraform.rc
 server-key.pem
 
 # Ignore backend hcl file
-backend.hcl
+*.hcl
 
 # Ignore key-pair
 *.pem
