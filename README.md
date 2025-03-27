@@ -6,7 +6,7 @@ Seat-Catcher AWS Infrastructure management repository
 - We don't consider high availability and failover in the dev environment
 
 ## Architecture Diagram
-- Updating...
+<img width="533" alt="스크린샷 2025-03-27 오후 5 07 25" src="https://github.com/user-attachments/assets/d64076ac-2429-40cc-80a9-ad279e0caa30" />
 
 ## HOW TO RUN
 
