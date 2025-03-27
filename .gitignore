@@ -46,3 +46,6 @@ server-key.pem
 *.pem
 *.pub
 tf-key-pair
+
+# Ignore scripts
+scripts/*

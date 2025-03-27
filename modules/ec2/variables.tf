@@ -19,3 +19,9 @@ variable "key_pair_save_path" {
   description = "Path to save the key pair"
   type        = string
 }
+
+variable "security_group_ids" {
+  description = "Security group IDs"
+  type        = list(string)
+  default     = []
+}

@@ -19,13 +19,13 @@ variable "secret_key" {
 variable "terraform_state_bucket" {
   description = "Name of the S3 bucket to store Terraform state"
   type        = string
-  sensitive = true
+  sensitive   = true
 }
 
 variable "dev_key" {
   description = "Name of state dev_key"
   type        = string
-  sensitive = true
+  sensitive   = true
 }
 
 variable "domain_name" {
@@ -36,17 +36,23 @@ variable "domain_name" {
 variable "dev_sub_domain_name" {
   description = "Development sub domain name"
   type        = string
-  sensitive = true
+  sensitive   = true
 }
 
 variable "dev_api_domain_name" {
   description = "Development API domain name"
   type        = string
-  sensitive = true
+  sensitive   = true
 }
 
 variable "dev_docs_domain_name" {
   description = "Development docs domain name"
   type        = string
-  sensitive = true
+  sensitive   = true
+}
+
+variable "seatcatcher_dev_ecr_repo_name" {
+  description = "Name of the ECR repository for the dev environment"
+  type        = string
+  default     = "seatcatcher-dev"
 }
