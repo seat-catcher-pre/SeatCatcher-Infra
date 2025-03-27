@@ -1,35 +1,17 @@
 #!/bin/bash
+mkdir -p /home/ec2-user/scripts
 
-# Add Docker's official GPG key:
-sudo apt-get update -y
-sudo apt-get install ca-certificates curl -y
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Update packages
+sudo yum update -y
 
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update -y
-
-# Install Docker Engine:
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-
-# Check Docker version:
-if [ -z "$(docker --version)" ]; then
-  echo "Docker is not installed"
-  exit 1
-fi
-
-sudo service docker start
+# Docker 설치
+sudo yum install docker -y
+sudo systemctl start docker
 sudo systemctl enable docker
 
-# Install Docker Compose
-sudo apt-get install docker-compose-plugin -y
+# EC2-user docker 권한 부여
+sudo usermod -a -G docker ec2-user
 
-if [ -z "$(docker-compose --version)" ]; then
-  echo "Docker Compose is not installed"
-  exit 1
-fi
+# Docker Compose 설치
+sudo curl -SL "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose

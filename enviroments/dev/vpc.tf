@@ -1,4 +1,4 @@
-module "dev_vpc" {
+module "dev-vpc" {
   source                  = "../../modules/vpc"
   vpc_cidr_block          = var.dev_vpc_cidr_block
   public_subnet_cidr      = var.dev_public_subnet_cidr
