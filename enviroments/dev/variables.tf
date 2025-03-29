@@ -55,7 +55,12 @@ variable "dev_public_subnet_cidr" {
   type        = string
 }
 
-variable "dev_private_subnet_cidr" {
+variable "dev_private_subnet_a_cidr" {
+  description = "Private subnet CIDR block"
+  type        = string
+}
+
+variable "dev_private_subnet_b_cidr" {
   description = "Private subnet CIDR block"
   type        = string
 }
@@ -77,26 +82,6 @@ variable "dev_private_subnet_tag_name" {
 
 variable "dev_public_subnet_tag_name" {
   description = "Public subnet tag name"
-  type        = string
-}
-
-variable "prod_vpc_cidr_block" {
-  description = "VPC CIDR block"
-  type        = string
-}
-
-variable "prod_public_subnet_cidr" {
-  description = "Public subnet CIDR block"
-  type        = string
-}
-
-variable "prod_private_subnet_cidr" {
-  description = "Private subnet CIDR block"
-  type        = string
-}
-
-variable "prod_vpc_tag_name" {
-  description = "Production VPC tag name"
   type        = string
 }
 

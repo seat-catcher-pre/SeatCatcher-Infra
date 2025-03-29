@@ -17,10 +17,20 @@ resource "aws_subnet" "public" {
   }
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "private_subnet_a" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.private_subnet_cidr
+  cidr_block        = var.private_subnet_a_cidr
   availability_zone = element(data.aws_availability_zones.available.names, 0)
+
+  tags = {
+    Name = var.private_subnet_tag_name
+  }
+}
+
+resource "aws_subnet" "private_subnet_b" {
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = var.private_subnet_b_cidr
+  availability_zone = element(data.aws_availability_zones.available.names, 1)
 
   tags = {
     Name = var.private_subnet_tag_name
