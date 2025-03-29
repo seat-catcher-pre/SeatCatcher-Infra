@@ -79,18 +79,6 @@ variable "database_environment_name" {
   default     = "dev"
 }
 
-variable "private_pem_key_path" {
-  description = "The path to the private key file used for SSH access."
-  type        = string
-  sensitive   = true
-}
-
-variable "dev_instance_public_ip" {
-  description = "The public IP address of the EC2 instance."
-  type        = string
-  sensitive   = true
-}
-
 
 variable "database_subnet_ids" {
   description = "A list of subnet IDs for the DB subnet group."

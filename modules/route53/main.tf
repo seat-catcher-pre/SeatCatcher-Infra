@@ -19,7 +19,7 @@ resource "aws_route53_record" "dev-api" {
   name    = var.dev_api_domain_name
   type    = "A"
   ttl     = "300"
-  records = [var.api_instance_ip]
+  records = [var.dev_instance_public_ip]
 }
 
 resource "aws_route53_record" "dev-docs" {
@@ -27,7 +27,7 @@ resource "aws_route53_record" "dev-docs" {
   name    = var.dev_docs_domain_name
   type    = "A"
   ttl     = "300"
-  records = [var.docs_instance_ip]
+  records = [var.dev_instance_public_ip]
 }
 
 data "aws_route53_zone" "dev-hosted-zone" {
