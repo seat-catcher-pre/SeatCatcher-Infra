@@ -15,7 +15,7 @@ variable "region" {
   type        = string
 }
 
-variable "database_user_name" {
+variable "database_username" {
   description = "Database user name"
   type        = string
   sensitive   = true
@@ -39,9 +39,9 @@ variable "database_port" {
   sensitive   = true
 }
 
-variable "backend_team" {
-  description = "backend developers ip addresses"
-  type        = list(string)
+variable "database_identifier" {
+  description = "Database identifier"
+  type        = string
   sensitive   = true
 }
 

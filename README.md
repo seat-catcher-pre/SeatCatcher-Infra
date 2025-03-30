@@ -55,3 +55,15 @@ Seat-Catcher AWS Infrastructure management repository
 - Do not hardcode sensitive information (e.g., AWS access keys) in `.tfvars` or code files.
 - Use environment variables or AWS CLI profiles to manage credentials securely.
 - But we used tfvars files in managing sensitive information. Be aware of it!!
+
+### Certbot in Amazon Linux 2023
+```bash
+sudo dnf -y install certbot
+
+sudo mkdir -p /docker/nginx/www
+sudo chown -R ec2-user:ec2-user /docker/nginx/www
+
+# Issuing SSL Certifications
+sudo certbot certonly --webroot -w /docker/nginx/www \
+-d api.dev.seatcatcher.site -d docs.dev.seatcatcher.site
+```
