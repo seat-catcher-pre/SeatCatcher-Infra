@@ -1,4 +1,5 @@
 resource "aws_db_instance" "db_instance" {
+  identifier = var.database_identifier
   allocated_storage      = var.database_allocated_storage
   db_name                = var.database_name
   db_subnet_group_name   = aws_db_subnet_group.db_subnet.name
