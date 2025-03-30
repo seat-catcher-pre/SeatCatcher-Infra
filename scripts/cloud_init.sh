@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p /home/ec2-user/scripts
 
 # Update packages
 sudo yum update -y
